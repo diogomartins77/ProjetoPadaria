@@ -1,0 +1,273 @@
+/**** layout*/
+
+html, body {
+    background: url(../imagens/fundo.jpg);
+    background-attachment: fixed;
+    height: 100%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;   
+}
+
+
+/****header*/
+#home{
+    margin-top:150px;
+    
+}
+
+.fundo-nav {
+    background: #ac8468;
+    opacity: 0.9;
+    
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #8B4513;
+    text-transform: uppercase;
+    font-size: 15px;
+    padding: 15px 20px;
+    margin-right: 5px;
+    border-bottom: 1px solid #8B4513;
+    font-weight: bold; 
+}
+
+.navbar-light .navbar-nav .nav-link:hover{
+  color: #DCDCDC;
+  background:#8B4513
+}
+
+button.navbar-toggler{
+    border: 1px solid #8B4513;
+}
+
+.fa-bars, .fa-navicon {
+    color: #8B4513;
+   
+}
+
+#Pesquisar i{
+color: #8B4513;
+}
+
+
+/*lateral****************/
+
+#lateral{
+    border: 1px solid #8B4513;
+    padding: 20px auto;
+    margin: 10px 0;
+    background: #c9a892;
+    opacity: 0.9;
+    
+}
+
+#lateral ul li{
+    padding: 10px;
+    display: block;
+    margin-top: 5px;
+}
+
+#lateral ul li a:hover{
+   color: #DCDCDC;
+   background: #8B4513;
+}
+
+
+
+#lateral a{
+    color: #8B4513;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    border-bottom: 1px solid #8B4513;
+    font-weight: bold;
+}
+#lateral form {
+    margin: 10px 0;
+    font-size: 10px;
+}
+
+#formulario-lateral{
+    font-size: 30px;
+}
+
+form h4 {
+color: #8B4513;
+text-transform: uppercase;
+padding: 20px;
+}
+
+form label{
+    font-size: 20px;
+    color: #8B4513;
+}
+
+#btn-style:hover {
+    color: #DCDCDC;
+    background: #cc7f4b;
+    
+}
+
+a#btn-cadastre-se:hover {
+    background: #8B4513;
+    color: #DCDCDC;
+    
+}
+
+.carousel-inner img{
+    height: 30em;
+    width: 100%;
+}
+.carousel-inner{
+    box-shadow: 0px 20px 15px 20px rgba(0, 0, 0, 0.5);
+    border: #8B4513 5px outset  ;
+}
+
+#fotos.col-md-8 {
+margin-top: 10px;
+
+}
+
+/**** produtos*/
+
+#produtos{
+    background: #c9a892;
+    opacity: 0.9;
+    color: #8B4513;
+    padding: 15px 10px;
+}
+
+#produtos h3{
+    text-transform: uppercase;
+    padding: 15px;
+    font-weight: bold;
+}
+
+.nov-list img{
+    border: #8B4513 2px outset;
+    height: 100px;
+    width: 200px;
+}
+
+.nov-list a p{
+    color: #8B4513;
+    margin: 5px 0;
+    text-align: center;
+}
+
+.nov-list a p:hover{
+    color: #F5F5DC;
+    background: #cc7f4b;
+    border-radius: 0 15px 0 15px;
+}
+.nov-list a:hover{
+    text-decoration: none;
+}
+
+
+p{
+    color: #8B4513;
+}
+
+.valor{
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+}
+.valor span {
+    font-size: 12px;
+}
+
+/********** footer*************/
+footer{
+    background: #ac8468;
+    opacity: 0.9;
+    margin-top: 10px;
+    padding: 15px 10px;
+    text-align: justify;
+}
+
+footer #rede-rodape a{
+margin-bottom: 10px;
+margin-top: 10px;
+}
+
+footer #rede-rodape p{
+    color: #3d1b03;
+    
+}
+
+.mapa{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+
+.mapa iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+
+h4{
+    text-transform: uppercase;
+    font-size: 20px;
+    color: #4d2204;
+    font-weight: bold;
+}
+
+.info-rodape p{
+    color: #3d1b03;
+    margin-top: 10px;
+    
+}
+
+
+
+/*/ Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) { 
+    .valor{
+        text-align: justify;
+      }
+    
+      .nov-list a p{
+        text-align: justify;
+      }
+
+      footer{
+        text-align: center;
+    }
+
+
+}
+
+/*/ Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) { 
+  .valor{
+    text-align: start;
+  }
+
+  .nov-list a p{
+    text-align: start;
+  }
+
+  footer{
+    text-align: center;
+}
+ }
+
+/*/ Medium devices (tablets, 768px and up)/*/
+@media (min-width: 768px) { 
+}
+
+/*/ Large devices (desktops, 992px and up)/*/
+@media (min-width: 992px) { 
+    
+ }
+
+/*/ Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) { 
+}
