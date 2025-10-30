@@ -64,7 +64,7 @@ function CriandoSacola() {
     }
 
     html += `
-        <table class="table table-striped">
+        <table class="table table-striped table-responsive-sm">
             <thead>
                 <tr>
                     <th>Produto</th>
