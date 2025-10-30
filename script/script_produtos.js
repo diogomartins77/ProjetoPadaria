@@ -190,7 +190,7 @@ const bancoDeDadosPadaria = [
         descricao: 'Risole grande com recheio cremoso de presunto e queijo.',
         preco: 8.00,
         disponivel: true,
-        img: `<img src= './imagens/imagens/imagensprodutos/risoles.png'></img>`,
+        img: `<img src= './imagens/imagensprodutos/risoles.png'></img>`,
     },
     {
         id: 'salgado006',
@@ -449,8 +449,6 @@ const bancoDeDadosPadaria = [
 
 ];
 
-
-
 const conteudoPesquisa = document.querySelector('#conteudo-pesquisa')
 const  listaDaSacolaContainer = document.querySelector('#ListaDaSacola') 
 
@@ -558,11 +556,11 @@ function exibir() {
 
         // O botão 'Fazer Pedido' (abre o modal)
         const botaoAdicionar = isSalgadoOuDoce
-            ? `<button type="button" class =" id_produto" data-produto-id="${produto.id}"><i class="fa-solid fa-plus"></i></button>`
+            ? `<button type="button" class =" id_produto1" data-produto-id="${produto.id}"><i class="fa-solid fa-plus"></i></button>`
             : ''; // Apenas Salgados e Doces abrem o modal de pedido/encomenda
 
         return `
-        <div class="item-produto card p-2 m-2" >
+        <div class="item-produto card p-2 m-2" style="">
             <div class="card-img" width: 200px;
             height: 150px;
             border: 3px ridge #8B4513;
@@ -584,7 +582,57 @@ function exibir() {
     container.innerHTML = htmlDosProdutos; //Injeta todo o HTML de uma vez
 }
 
+//exibindo na pagina produtos
+const TodosProdutos = todosProduto => {
 
+    const produtosLista = bancoDeDadosPadaria.filter(produto => {
+        return produto.categoria
+
+    })
+    return produtosLista
+
+}
+
+let produtoslistados = []
+function listandoProdutos() {
+    let container = document.getElementById('todos_os_produtos')
+    produtoslistados = TodosProdutos()
+
+    const htmlDosProdutos = produtoslistados.map(produto => {
+        const precoFormatado = produto.preco.toFixed(2).replace('.', ',');
+        const unidade = produto.venda || 'Un.'; // Adiciona uma unidade padrão
+        const isSalgadoOuDoce = produto.categoria
+
+        // O botão 'Fazer Pedido' (abre o modal)
+        const botaoAdicionar = isSalgadoOuDoce
+            ? `<button type="button" class =" id_produto1" data-produto-id="${produto.id}"><i class="fa-solid fa-plus"></i></button>`
+            : ''; // Apenas Salgados e Doces abrem o modal de pedido/encomenda
+
+        return `
+        <div class="item-produto card p-2 m-2" style="">
+            <div class="card-img" width: 200px;
+            height: 150px;
+            border: 3px ridge #8B4513;
+            display: flex; align-items: center; justify-content: center;">
+                ${produto.img}
+            </div>
+            <div class="card-body text-center">
+                <h5 class="card-title">${produto.nome}</h5>
+                <p class="card-text">${produto.descricao}</p>
+                <p class="card-text"><strong>R$ ${precoFormatado} / ${unidade}</strong></p>
+                ${botaoAdicionar}
+            </div>
+        </div>
+    `;
+
+
+    }).join(''); // Junta todas as strings HTML em uma única string
+
+
+    container.innerHTML = htmlDosProdutos; //Injeta todo o HTML de uma vez*/
+
+
+}
 
 //retira todo o menu inicial da pagina index
 function retirandoPrincipal() {
@@ -621,7 +669,7 @@ function mostrandoPesquisa() {
 //Abrindo modal pelo botao de produto pesquisados
 function add() {
 
-    let btn = document.querySelectorAll('.id_produto') //lista de botoes com essa classe
+    let btn = document.querySelectorAll('.id_produto1') //lista de botoes com essa classe
 
     btn.forEach(btn => {//percorrendo lista de botoes
 
@@ -644,7 +692,27 @@ function add() {
 
 }
 
+//Abrindo modal pelo botao de todos ops produtos
+function add2() {
+    let btn2 = document.querySelectorAll('.id_produto1') //lista de botoes com essa classe
 
+    btn2.forEach(btn => {//percorrendo lista de botoes
+
+        // 3. Adiciona o evento de clique a CADA botão
+        btn.addEventListener('click', (event) => {
+            // usando o 'data-produto-id' para recuperar o id de cada produto
+            const idDoProduto = event.currentTarget.dataset.produtoId;
+            //recuperando o objeto completo do id selecionado usando find()
+            const produtoEscolhido = produtoslistados.find(p => p.id == idDoProduto)
+
+            if (produtoEscolhido) {
+                //passando o produto escolhido pelo id para a função (agora apenas preenche)
+                adicionarNaSacola(produtoEscolhido)
+            }
+        });
+    })
+
+};
 
 
 // === FUNÇÃO ADICIONAR NA SACOLA REVISADA (APENAS PREENCHE E ARMAZENA O PRODUTO) ===
@@ -688,19 +756,18 @@ function salvarNaSacola() {
         produtoAtualParaSacola.peso = peso
         produtoAtualParaSacola.quantidade = quantidade
         produtoAtualParaSacola.imgReferencia = imgReferencia
-        
+
         // Chave para o localStorage
         let sacolaKey = `sacola_${produtoAtualParaSacola.id}`
 
         // Salva o produto no localStorage
-    
         let produtos = JSON.stringify(produtoAtualParaSacola)
         localStorage.setItem(sacolaKey, produtos)
 
         // Fecha o modal após adicionar
         fecharModal();
 
-        
+       
     } else {
         console.warn("Nenhum produto para adicionar à sacola.");
     }
@@ -724,6 +791,27 @@ function configurarListenersModal() {
 // =========================================================================
 
 
+
+
+//TROCANDO A MENSAGEM DE IMAGEM PARA IMAGEM ADICIONADA
+if (document.getElementById('imagem_referencia_input_custom')) {
+    document.getElementById('imagem_referencia_input_custom').addEventListener('change', function () {
+        // Pega o input
+        let input = this;
+        // Pega o elemento onde o nome será exibido
+        let fileNameDisplay = document.getElementById('file-name-display-custom');
+
+        // Verifica se há arquivos
+        if (input.files && input.files.length > 0) {
+            // Exibe o nome do primeiro arquivo
+            fileNameDisplay.textContent = input.files[0].name;
+        } else {
+            // Volta ao texto padrão
+            fileNameDisplay.textContent = 'Nenhum arquivo selecionado';
+        }
+    });
+}
+
 // === CONFIGURAÇÃO FINAL: GARANTE QUE O DOM ESTÁ PRONTO ===
 document.addEventListener('DOMContentLoaded', (event) => {
     // Configura os listeners do modal (agora com certeza o HTML já existe)
@@ -732,7 +820,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const eventoPesquisar = document.querySelector('.botao_pesquisar')
     eventoPesquisar.addEventListener('click', mostrandoPesquisa)
     // Funções que também precisam de elementos DOM existentes
-   
-     // Configura listeners para os botões da lista completa de produtos
+    listandoProdutos(); // Se esta função manipula o DOM, deve estar aqui.
+    add2(); // Configura listeners para os botões da lista completa de produtos
 
 });
+

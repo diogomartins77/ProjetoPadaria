@@ -4,7 +4,11 @@ const bd = bancoDeDadosPadaria
 const navDoce = document.getElementById('nov_doce_lista')
 const navSal = document.getElementById('nov-sal-lista')
 const navPao = document.getElementById('nov-pao-lista')
-
+// === NOVAS DECLARAÇÕES GLOBAIS PARA O MODAL (Correção do erro de null) ===
+const modal = document.getElementById('myModal');
+const closeModalBtn = document.getElementById('closeModalBtn');
+const addsacolaBtn = document.getElementById('AddPedido');
+let produtoAtualParaSacola = null;
 
 function novDoce (){
      let container = navDoce
@@ -171,6 +175,8 @@ add()
 // === FUNÇÃO ADICIONAR NA SACOLA REVISADA (APENAS PREENCHE E ARMAZENA O PRODUTO) ===
 function adicionarNaSacola(produto) {
 
+     produtoAtualParaSacola = produto;
+
     const T = document.getElementById('T');
     const P = document.getElementById('P');
 
@@ -185,9 +191,6 @@ function adicionarNaSacola(produto) {
     }
 }
 // =========================================================================
-
-// === NOVAS FUNÇÕES PARA CONFIGURAR E TRATAR EVENTOS DO MODAL (Chamadas apenas uma vez) ===
-
 function fecharModal() {
     if (modal) {
         modal.close();
@@ -195,6 +198,60 @@ function fecharModal() {
         produtoAtualParaSacola = null;
     }
 }
+
+function salvarNaSacola() {
+    // Apenas procede se houver um produto selecionado
+    
+    if (produtoAtualParaSacola) {
+        console.log(produtoAtualParaSacola)
+        // Pega os valores do modal (opcional, dependendo de onde você usa isso)
+        const peso = document.getElementById('peso').value
+        const quantidade = document.getElementById('quantidade').value
+        const imgReferencia = document.getElementById('file-name-display-custom').value
+        produtoAtualParaSacola.peso = peso
+        produtoAtualParaSacola.quantidade = quantidade
+        produtoAtualParaSacola.imgReferencia = imgReferencia
+
+        // Chave para o localStorage
+        let sacolaKey = `sacola_${produtoAtualParaSacola.id}`
+
+        // Salva o produto no localStorage
+        let produtos = JSON.stringify(produtoAtualParaSacola)
+        localStorage.setItem(sacolaKey, produtos)
+
+        // Fecha o modal após adicionar
+        fecharModal();
+
+       
+    } else {
+        console.warn("Nenhum produto para adicionar à sacola.");
+    }
+}
+
+function configurarListenersModal() {
+    // 1. Configura o Listener do botão de fechar (Usa a variável global 'closeModalBtn')
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', fecharModal);
+    } else {
+        console.error("Elemento 'closeModalBtn' não encontrado no DOM. Verifique o HTML.");
+    }
+
+    // 2. Configura o Listener do botão de Adicionar Pedido (Usa a variável global 'addsacolaBtn')
+    if (addsacolaBtn) {
+        addsacolaBtn.addEventListener('click', salvarNaSacola);
+    } else {
+        console.error("Elemento 'AddPedido' (addsacolaBtn) não encontrado no DOM. Verifique o HTML.");
+    }
+}
+
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    // Configura os listeners do modal (agora com certeza o HTML já existe)
+    configurarListenersModal();
+
+    
+});
+
 
 
 
