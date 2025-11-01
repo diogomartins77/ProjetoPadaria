@@ -61,23 +61,26 @@
                             <a class="nav-link" href="produtos.html"> Produtos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="sacola.html">Sacola <i
+                            <a class="nav-link" id="paginaSacola" href="sacola.html">Sacola <i
                                     class="fa-solid fa-basket-shopping"></i></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="contatos.html">Contatos</a>
                         </li>
                         <li class="nav-item  d-sm-block d-md-none">
-                            <form class="form-inline nav-link " id="Pesquisar">
+                            <form class="form-inline ml-auto " id="Pesquisar">
                                 <div class="input-group ">
-                                    <input class="form-control" type="search" placeholder="Pesquisar">
+                                    <input class="form-control" type="search" placeholder="Pesquisar"
+                                        id="valorPesquisarCelular">
                                     <div class="input-group-append">
-                                        <button class="input-group-text btn  " type="submit">
+                                        <button class="input-group-text btn botao_pesquisar_celular " type="button"
+                                            id="botao_pesquisar_celular">
                                             <i class="fa-solid fa-magnifying-glass"></i>
                                         </button>
                                     </div>
                                 </div>
                             </form>
+
                         </li>
                     </ul>
                 </div>
@@ -193,21 +196,21 @@
             <div class="container" id="nov-doce"><!--container-->
                 <h3>Novidades Doces</h3>
                 <div class="row" id="nov_doce_lista"><!--row-->
-            </div><!--container-->
+                </div><!--container-->
 
 
 
-            <div class="container" id="nov-sal"><!--container sal-->
-                <h3>Novidades Salgados</h3>
-                <div class="row" id="nov-sal-lista"><!--row-->
+                <div class="container" id="nov-sal"><!--container sal-->
+                    <h3>Novidades Salgados</h3>
+                    <div class="row" id="nov-sal-lista"><!--row-->
 
-                </div><!--row-->
-            </div><!--container sal-->
+                    </div><!--row-->
+                </div><!--container sal-->
 
-            <div class="container" id="nov-pao"><!--container pao-->
-                <h3>Novidades Pães</h3>
-                <div class="row" id="nov-pao-lista"><!--row-->
-            </div><!--container pao-->
+                <div class="container" id="nov-pao"><!--container pao-->
+                    <h3>Novidades Pães</h3>
+                    <div class="row" id="nov-pao-lista"><!--row-->
+                    </div><!--container pao-->
 
         </section><!--/produtos-->
 
@@ -216,7 +219,7 @@
 
 
     </div>
-<!----------PRODUTOS PESQUISADOS--------------------------->
+    <!----------PRODUTOS PESQUISADOS--------------------------->
     <div id="conteudo-pesquisa">
         <!--onde vai exibir as pesquisas-->
         <div id="exibir"></div>
@@ -341,6 +344,7 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
     <script type="module" src="./script/script_produto_index.js"></script>
+    <script type="module" src="./script/script_pesquisar_index.js"></script>
     <script src="./script/script.js" defer></script>
 </body>
 

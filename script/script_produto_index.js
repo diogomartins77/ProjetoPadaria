@@ -191,6 +191,22 @@ function adicionarNaSacola(produto) {
     }
 }
 // =========================================================================
+function notificarsacola(item) {
+    // 1. Percorrer todas as chaves no localStorage
+    for (let i = 0; i < localStorage.length; i++) {
+        // Obter o nome da chave na posição 'i'
+        const key = localStorage.key(i);
+
+        // 2. Verificar se a chave começa com o prefixo desejado
+        if (key && key.startsWith(item)) {
+           
+          return  paginaSacola.classList.add('sacolaAtiva')
+        }
+         return
+       }   
+      
+    }
+
 function fecharModal() {
     if (modal) {
         modal.close();
@@ -203,7 +219,7 @@ function salvarNaSacola() {
     // Apenas procede se houver um produto selecionado
     
     if (produtoAtualParaSacola) {
-        console.log(produtoAtualParaSacola)
+        
         // Pega os valores do modal (opcional, dependendo de onde você usa isso)
         const peso = document.getElementById('peso').value
         const quantidade = document.getElementById('quantidade').value
@@ -221,7 +237,7 @@ function salvarNaSacola() {
 
         // Fecha o modal após adicionar
         fecharModal();
-
+        notificarsacola('sacola_')
        
     } else {
         console.warn("Nenhum produto para adicionar à sacola.");
@@ -248,7 +264,7 @@ function configurarListenersModal() {
 document.addEventListener('DOMContentLoaded', (event) => {
     // Configura os listeners do modal (agora com certeza o HTML já existe)
     configurarListenersModal();
-
+    notificarsacola('sacola_')
     
 });
 

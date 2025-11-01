@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-     <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
@@ -37,7 +37,7 @@
     </style>
 </head>
 
-<body >
+<body>
 
     <header id="cabecalho"><!--incio cabecalho-->
         <nav class="navbar navbar-expand-md navbar-light fundo-nav"><!--incio nav-->
@@ -78,18 +78,20 @@
                             <a class="nav-link" href="produtos.html"> Produtos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="sacola.html">Sacola <i
+                            <a class="nav-link" id="paginaSacola" href="sacola.html">Sacola <i
                                     class="fa-solid fa-basket-shopping"></i></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="contatos.html">Contatos</a>
                         </li>
                         <li class="nav-item  d-sm-block d-md-none">
-                            <form class="form-inline nav-link " id="Pesquisar">
+                            <form class="form-inline ml-auto " id="Pesquisar">
                                 <div class="input-group ">
-                                    <input class="form-control" type="search" placeholder="Pesquisar">
+                                    <input class="form-control" type="search" placeholder="Pesquisar"
+                                        id="valorPesquisarCelular">
                                     <div class="input-group-append">
-                                        <button class="input-group-text btn  " type="submit">
+                                        <button class="input-group-text btn botao_pesquisar_celular " type="button"
+                                            id="botao_pesquisar_celular">
                                             <i class="fa-solid fa-magnifying-glass"></i>
                                         </button>
                                     </div>
@@ -107,10 +109,10 @@
     <main>
         <!--onde vai exibir as pesquisas-->
         <div class="todosProdutos">
-        <div id="todos_os_produtos" ></div>
+            <div id="todos_os_produtos"></div>
         </div>
 
-     
+
         <div id="conteudo-pesquisa" class="conteudo-pesquisa">
             <!--onde vai exibir as pesquisas-->
             <div id="exibir"></div>
@@ -231,7 +233,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-    <script src="./script/script_produtos.js" defer> </script>
+    <script type="module" src="./script/script_pesquisar_index.js"></script>
+    <script type="module" src="./script/script_produtos.js" defer> </script>
 </body>
 
 </html>

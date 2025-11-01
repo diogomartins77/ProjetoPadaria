@@ -382,6 +382,11 @@ button:hover {
 
 #todos_os_produtos_esconder {
     display: none;
+} 
+/****************ativar sacola ***********/
+#nav-p .sacolaAtiva{
+    color:#00ff37;
+    text-shadow: 1px 1px 2px rgb(2, 10, 4), -1px -1px 2px rgb(1, 49, 17);
 }
 
 /********** footer*************/

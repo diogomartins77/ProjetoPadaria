@@ -452,7 +452,8 @@ const bancoDeDadosPadaria = [
 
 
 const conteudoPesquisa = document.querySelector('#conteudo-pesquisa')
-const  listaDaSacolaContainer = document.querySelector('#ListaDaSacola') 
+const listaDaSacolaContainer = document.querySelector('#ListaDaSacola')
+const paginaSacola = document.querySelector('#paginaSacola')
 
 let produtoPesquisado = true
 //variavel global para obj filtrados
@@ -534,9 +535,9 @@ function exibir() {
     const formsPesquisa = document.querySelectorAll('#botao_pesquisar');
     formsPesquisa.forEach(form => {
         form.addEventListener('submit', (e) => {
-            
+
             e.preventDefault(); // Evita o recarregamento da página
-        
+
         });
     });
 
@@ -667,72 +668,87 @@ function adicionarNaSacola(produto) {
     }
 }
 // =========================================================================
+function notificarsacola(item) {
+    // 1. Percorrer todas as chaves no localStorage
+    for (let i = 0; i < localStorage.length; i++) {
+        // Obter o nome da chave na posição 'i'
+        const key = localStorage.key(i);
 
-// === NOVAS FUNÇÕES PARA CONFIGURAR E TRATAR EVENTOS DO MODAL (Chamadas apenas uma vez) ===
-
-function fecharModal() {
-    if (modal) {
-        modal.close();
-        // Limpa a referência ao produto atual
-        produtoAtualParaSacola = null;
+        // 2. Verificar se a chave começa com o prefixo desejado
+        if (key && key.startsWith(item)) {
+           
+          return  paginaSacola.classList.add('sacolaAtiva')
+        }
+         return
+       }   
+      
     }
-}
+    // === NOVAS FUNÇÕES PARA CONFIGURAR E TRATAR EVENTOS DO MODAL (Chamadas apenas uma vez) ===
 
-function salvarNaSacola() {
-    // Apenas procede se houver um produto selecionado
-    if (produtoAtualParaSacola) {
-        // Pega os valores do modal (opcional, dependendo de onde você usa isso)
-        const peso = document.getElementById('peso').value
-        const quantidade = document.getElementById('quantidade').value
-        const imgReferencia = document.getElementById('file-name-display-custom').value
-        produtoAtualParaSacola.peso = peso
-        produtoAtualParaSacola.quantidade = quantidade
-        produtoAtualParaSacola.imgReferencia = imgReferencia
-        
-        // Chave para o localStorage
-        let sacolaKey = `sacola_${produtoAtualParaSacola.id}`
-
-        // Salva o produto no localStorage
-    
-        let produtos = JSON.stringify(produtoAtualParaSacola)
-        localStorage.setItem(sacolaKey, produtos)
-
-        // Fecha o modal após adicionar
-        fecharModal();
-
-        
-    } else {
-        console.warn("Nenhum produto para adicionar à sacola.");
-    }
-}
-
-function configurarListenersModal() {
-    // 1. Configura o Listener do botão de fechar (Usa a variável global 'closeModalBtn')
-    if (closeModalBtn) {
-        closeModalBtn.addEventListener('click', fecharModal);
-    } else {
-        console.error("Elemento 'closeModalBtn' não encontrado no DOM. Verifique o HTML.");
+    function fecharModal() {
+        if (modal) {
+            modal.close();
+            // Limpa a referência ao produto atual
+            produtoAtualParaSacola = null;
+        }
     }
 
-    // 2. Configura o Listener do botão de Adicionar Pedido (Usa a variável global 'addsacolaBtn')
-    if (addsacolaBtn) {
-        addsacolaBtn.addEventListener('click', salvarNaSacola);
-    } else {
-        console.error("Elemento 'AddPedido' (addsacolaBtn) não encontrado no DOM. Verifique o HTML.");
+    function salvarNaSacola() {
+        // Apenas procede se houver um produto selecionado
+        if (produtoAtualParaSacola) {
+            // Pega os valores do modal (opcional, dependendo de onde você usa isso)
+            const peso = document.getElementById('peso').value
+            const quantidade = document.getElementById('quantidade').value
+            const imgReferencia = document.getElementById('file-name-display-custom').value
+            produtoAtualParaSacola.peso = peso
+            produtoAtualParaSacola.quantidade = quantidade
+            produtoAtualParaSacola.imgReferencia = imgReferencia
+
+            // Chave para o localStorage
+            let sacolaKey = `sacola_${produtoAtualParaSacola.id}`
+
+            // Salva o produto no localStorage
+
+            let produtos = JSON.stringify(produtoAtualParaSacola)
+            localStorage.setItem(sacolaKey, produtos)
+
+            // Fecha o modal após adicionar
+            fecharModal();
+            notificarsacola('sacola_')
+
+
+        } else {
+            console.warn("Nenhum produto para adicionar à sacola.");
+        }
     }
-}
-// =========================================================================
+
+    function configurarListenersModal() {
+        // 1. Configura o Listener do botão de fechar (Usa a variável global 'closeModalBtn')
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', fecharModal);
+        } else {
+            console.error("Elemento 'closeModalBtn' não encontrado no DOM. Verifique o HTML.");
+        }
+
+        // 2. Configura o Listener do botão de Adicionar Pedido (Usa a variável global 'addsacolaBtn')
+        if (addsacolaBtn) {
+            addsacolaBtn.addEventListener('click', salvarNaSacola);
+        } else {
+            console.error("Elemento 'AddPedido' (addsacolaBtn) não encontrado no DOM. Verifique o HTML.");
+        }
+    }
+    // =========================================================================
 
 
-// === CONFIGURAÇÃO FINAL: GARANTE QUE O DOM ESTÁ PRONTO ===
-document.addEventListener('DOMContentLoaded', (event) => {
-    // Configura os listeners do modal (agora com certeza o HTML já existe)
-    configurarListenersModal();
+    // === CONFIGURAÇÃO FINAL: GARANTE QUE O DOM ESTÁ PRONTO ===
+    document.addEventListener('DOMContentLoaded', (event) => {
+        // Configura os listeners do modal (agora com certeza o HTML já existe)
+        configurarListenersModal();
+        notificarsacola('sacola_')
+        const eventoPesquisar = document.querySelector('.botao_pesquisar')
+        eventoPesquisar.addEventListener('click', mostrandoPesquisa)
+        // Funções que também precisam de elementos DOM existentes
 
-    const eventoPesquisar = document.querySelector('.botao_pesquisar')
-    eventoPesquisar.addEventListener('click', mostrandoPesquisa)
-    // Funções que também precisam de elementos DOM existentes
-   
-     // Configura listeners para os botões da lista completa de produtos
+        // Configura listeners para os botões da lista completa de produtos
 
-});
+    });

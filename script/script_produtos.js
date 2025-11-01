@@ -1,456 +1,9 @@
-const bancoDeDadosPadaria = [
-    // Bolo
-    {
-        id: 'bolo001',
-        categoria: 'Bolo',
-        subcategoria: 'Tradicionais',
-        nome: 'Brigadeiro',
-        descricao: 'Bolo de chocolate com cobertura e recheio de brigadeiro cremoso.',
-        preco: 55.00,
-        venda: 'KG',
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/boloBrigadeiro.png'></img>`,
-
-
-    },
-    {
-        id: 'bolo002',
-        categoria: 'Bolo',
-        subcategoria: 'Tradicionais',
-        nome: 'Casadinho',
-        descricao: 'Bolo com recheio de beijinho e brigadeiro.',
-        preco: 52.00,
-        venda: 'KG',
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/boloCasadinho.png'></img>`,
-    },
-    {
-        id: 'bolo003',
-        categoria: 'Bolo',
-        subcategoria: 'Tradicionais',
-        nome: 'Prestigio',
-        descricao: 'Bolo de chocolate com recheio e cobertura de coco e chocolate.',
-        preco: 58.00,
-        venda: 'KG',
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/prestigio.png'></img>`,
-    },
-    {
-        id: 'bolo004',
-        categoria: 'Bolo',
-        subcategoria: 'Frutas',
-        nome: 'Creme com Morango',
-        descricao: 'Bolo de creme com pedaços frescos de morango.',
-        preco: 60.00,
-        venda: 'KG',
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/cremeMorango.png'></img>`,
-    },
-    {
-        id: 'bolo005',
-        categoria: 'Bolo',
-        subcategoria: 'Frutas',
-        nome: 'Creme com Abacaxi',
-        descricao: 'Bolo de creme com pedaços de abacaxi.',
-        preco: 58.00,
-        venda: 'KG',
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/boloAbacaxi.png'></img>`,
-    },
-    {
-        id: 'bolo006',
-        categoria: 'Bolo',
-        subcategoria: 'Gourmet',
-        nome: 'Trufado',
-        descricao: 'Bolo com recheio e cobertura de chocolate trufado intenso.',
-        preco: 70.00,
-        venda: 'KG',
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/trufado.png'></img>`,
-    },
-
-    // Docinho
-    {
-        id: 'docinho001',
-        categoria: 'Docinho',
-        subcategoria: 'Tradicionais',
-        nome: 'Brigadeiro',
-        descricao: 'Clássico brigadeiro cremoso.',
-        preco: 70.00,
-        venda: 'Cento',
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/brigadeiro.png'></img>`,
-    },
-    {
-        id: 'docinho002',
-        categoria: 'Docinho',
-        subcategoria: 'Tradicionais',
-        nome: 'Casadinho',
-        descricao: 'Dupla perfeita de beijinho e brigadeiro.',
-        preco: 70.00,
-        venda: 'Cento',
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/doceCasadinho.png'></img>`,
-    },
-    {
-        id: 'docinho003',
-        categoria: 'Docinho',
-        subcategoria: 'Tradicionais',
-        nome: 'Beijinho',
-        descricao: 'Docinho de coco envolto em açúcar cristal.',
-        preco: 70.00,
-        venda: 'Cento',
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/beijinho.png'></img>`,
-    },
-    {
-        id: 'docinho004',
-        categoria: 'Docinho',
-        subcategoria: 'Gourmet',
-        nome: 'Ninho com Nutella',
-        descricao: 'Brigadeiro de ninho com um recheio generoso de Nutella.',
-        preco: 80.00,
-        venda: 'Cento',
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/ninhoComNutella.png'></img>`,
-    },
-    {
-        id: 'docinho005',
-        categoria: 'Docinho',
-        subcategoria: 'Gourmet',
-        nome: 'Olho de Sogra',
-        descricao: 'Docinho de ameixa com coco e doce de leite.',
-        preco: 80.00,
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/olhodeSogra.png'></img>`,
-    },
-    {
-        id: 'docinho006',
-        categoria: 'Docinho',
-        subcategoria: 'Gourmet',
-        nome: 'Bicho de Pé',
-        descricao: 'Brigadeiro de morango com toque gourmet.',
-        preco: 80.00,
-        venda: 'Cento',
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/bichodePe.png'></img>`,
-    },
-
-    // Salgado
-    {
-        id: 'salgado001',
-        categoria: 'Salgado',
-        subcategoria: 'Frito',
-        tipo: 'Mini',
-        nome: 'Coxinha de Frango',
-        descricao: 'Mini coxinhas crocantes com recheio de frango desfiado.',
-        preco: 4.00,
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/coxinhafrango.png'></img>`,
-    },
-    {
-        id: 'salgado002',
-        categoria: 'Salgado',
-        subcategoria: 'Frito',
-        tipo: 'Mini',
-        nome: 'Coxinha de Carne',
-        descricao: 'Mini coxinhas crocantes com recheio de carne moída.',
-        preco: 4.00,
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/coxinhacarne.png'></img>`,
-    },
-    {
-        id: 'salgado003',
-        categoria: 'Salgado',
-        subcategoria: 'Frito',
-        tipo: 'Mini',
-        nome: 'Risole de Presunto e Queijo',
-        descricao: 'Mini risoles com recheio cremoso de presunto e queijo.',
-        preco: 4.00,
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/risoles.png'></img>`,
-    },
-    {
-        id: 'salgado004',
-        categoria: 'Salgado',
-        subcategoria: 'Frito',
-        tipo: 'Grande',
-        nome: 'Coxinha de Frango Grande',
-        descricao: 'Coxinha grande e crocante com recheio de frango desfiado.',
-        preco: 8.00,
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/coxinhafrango.png'></img>`,
-    },
-    {
-        id: 'salgado005',
-        categoria: 'Salgado',
-        subcategoria: 'Frito',
-        tipo: 'Grande',
-        nome: 'Risole de Presunto e Queijo Grande',
-        descricao: 'Risole grande com recheio cremoso de presunto e queijo.',
-        preco: 8.00,
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/risoles.png'></img>`,
-    },
-    {
-        id: 'salgado006',
-        categoria: 'Salgado',
-        subcategoria: 'Assado',
-        tipo: 'Mini',
-        nome: 'Enroladinho de Frios',
-        descricao: 'Mini pães enrolados com recheio de frios.',
-        preco: 4.00,
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/enroladinhofrios.png'></img>`,
-    },
-    {
-        id: 'salgado007',
-        categoria: 'Salgado',
-        subcategoria: 'Assado',
-        tipo: 'Mini',
-        nome: 'Enroladinho de Salsicha',
-        descricao: 'Mini pães enrolados com salsicha.',
-        preco: 4.00,
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/enroladinhosalsisha.png'></img>`,
-    },
-    {
-        id: 'salgado008',
-        categoria: 'Salgado',
-        subcategoria: 'Assado',
-        tipo: 'Mini',
-        nome: 'Croissant de Carne',
-        descricao: 'Mini croissants recheados com carne.',
-        preco: 5.00,
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/croissant-de-frango.webp'></img>`,
-    },
-    {
-        id: 'salgado009',
-        categoria: 'Salgado',
-        subcategoria: 'Assado',
-        tipo: 'Mini',
-        nome: 'Croissant de Frango',
-        descricao: 'Mini croissants recheados com frango.',
-        preco: 5.00,
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/croissant-de-frango.webp'></img>`,
-    },
-    {
-        id: 'salgado010',
-        categoria: 'Salgado',
-        subcategoria: 'Assado',
-        tipo: 'Grande',
-        nome: 'Hambúrguer Cheddar e Bacon',
-        descricao: 'Pão de hambúrguer artesanal com blend de carne, cheddar e bacon.',
-        preco: 18.00,
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/salgado-hamburguer.jfif'></img>`,
-
-    },
-    {
-        id: 'salgado011',
-        categoria: 'Salgado',
-        subcategoria: 'Assado',
-        tipo: 'Grande',
-        nome: 'Hambúrguer Frango Catupiry',
-        descricao: 'Pão de hambúrguer artesanal com frango desfiado e catupiry.',
-        preco: 17.00,
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/salgado-hamburguer.jfif'></img>`,
-    },
-    {
-        id: 'salgado012',
-        categoria: 'Salgado',
-        subcategoria: 'Assado',
-        tipo: 'Grande',
-        nome: 'Salsicha Cheddar e Bacon',
-        descricao: 'Pão grande com salsicha, queijo cheddar e bacon.',
-        preco: 16.00,
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/salgadoSalsichaGrande.jpg'></img>`,
-    },
-    {
-        id: 'salgado013',
-        categoria: 'Salgado',
-        subcategoria: 'Assado',
-        tipo: 'Grande',
-        nome: 'Salsicha Frango Catupiry',
-        descricao: 'Pão grande com salsicha e recheio de frango com catupiry.',
-        preco: 15.00,
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/salgadoSalsichaGrande.jpg'></img>`,
-    },
-    {
-        id: 'salgado014',
-        categoria: 'Salgado',
-        subcategoria: 'Assado',
-        tipo: 'Grande',
-        nome: 'Torta de Frango Grande',
-        descricao: 'Torta salgada generosa com recheio cremoso de frango.',
-        preco: 45.00,
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/Torta_de_frango_cremosa.jpg'></img>`,
-    },
-
-    // Pães
-    {
-        id: 'pao001',
-        categoria: 'Pães',
-        subcategoria: 'Tradicionais',
-        nome: 'Pão Italiano',
-        descricao: 'Pão de casca crocante e miolo macio.',
-        preco: 12.00,
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/paoItaliano.jfif'></img>`,
-    },
-    {
-        id: 'pao002',
-        categoria: 'Pães',
-        subcategoria: 'Tradicionais',
-        nome: 'Pão Francês',
-        descricao: 'O clássico pãozinho do dia a dia.',
-        preco: 1.50,
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/pao-frances.jfif'></img>`,
-    },
-    {
-        id: 'pao003',
-        categoria: 'Pães',
-        subcategoria: 'Tradicionais',
-        nome: 'Pão Australiano',
-        descricao: 'Pão levemente adocicado com um toque de mel.',
-        preco: 15.00,
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/australiano.jfif'></img>`,
-    },
-    {
-        id: 'pao004',
-        categoria: 'Pães',
-        subcategoria: 'Tradicionais',
-        nome: 'Pão da Casa',
-        descricao: 'Pão artesanal com receita secreta da casa.',
-        preco: 14.00,
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/daCasa.jfif'></img>`,
-    },
-    {
-        id: 'pao005',
-        categoria: 'Pães',
-        subcategoria: 'Tradicionais',
-        nome: 'Torradas',
-        descricao: 'Fatias de pão assadas até ficarem crocantes.',
-        preco: 8.00,
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/torradas.jfif'></img>`,
-    },
-    {
-        id: 'pao006',
-        categoria: 'Pães',
-        subcategoria: 'Doce',
-        nome: 'Rosca',
-        descricao: 'Rosca doce com cobertura de açúcar ou glacê.',
-        preco: 10.00,
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/rosca.jfif'></img>`,
-    },
-    {
-        id: 'pao007',
-        categoria: 'Pães',
-        subcategoria: 'Doce',
-        nome: 'Lingua de Sogra',
-        descricao: 'Pão doce em formato de língua, crocante e açucarado.',
-        preco: 3.50,
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/lingua-de-sogra.jfif'></img>`,
-    },
-    {
-        id: 'pao008',
-        categoria: 'Pães',
-        subcategoria: 'Recheado',
-        nome: 'Pão Recheado Presunto e Queijo',
-        descricao: 'Pão macio com recheio generoso de presunto e queijo.',
-        preco: 9.00,
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/paaorecheadoP+Q.jfif'></img>`,
-    },
-    {
-        id: 'pao009',
-        categoria: 'Pães',
-        subcategoria: 'Recheado',
-        nome: 'Pão Recheado Peito de Peru',
-        descricao: 'Pão macio com recheio de peito de peru e queijo.',
-        preco: 9.50,
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/paoRecheadoPeitoPeru.jfif'></img>`,
-    },
-
-    // Doce da Vitrine
-    {
-        id: 'doce001',
-        categoria: 'Doce',
-        subcategoria: 'Copo',
-        nome: 'Mousse de Maracujá',
-        descricao: 'Mousse refrescante de maracujá em copo individual.',
-        preco: 10.00,
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/mousse-m.jpg'></img>`,
-    },
-    {
-        id: 'doce002',
-        categoria: 'Doce',
-        subcategoria: 'Torta',
-        nome: 'Torta de Limão',
-        descricao: 'Torta clássica de limão com merengue.',
-        preco: 12.00,
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/torteldelimao.jfif'></img>`,
-    },
-    {
-        id: 'doce003',
-        categoria: 'Doce',
-        subcategoria: 'Bolachinha',
-        nome: 'Sequilhos',
-        descricao: 'Biscoitos amanteigados que derretem na boca.',
-        preco: 20.00, // Preço por pacote
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/bolachinha.jfif'></img>`,
-    },
-    {
-        id: 'doce004',
-        categoria: 'Doce',
-        subcategoria: 'Vitrine',
-        nome: 'Croissant de Chocolate',
-        descricao: 'Croissant folhado recheado com chocolate.',
-        preco: 8.00,
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/crasaintdeChocolate.jfif'></img>`,
-    },
-    {
-        id: 'doce005',
-        categoria: 'Doce',
-        subcategoria: 'Vitrine',
-        nome: 'Bombas',
-        descricao: 'Choux cream recheado com creme e coberto com chocolate.',
-        preco: 9.00,
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/bombas.jfif'></img>`
-    },
-    {
-        id: 'doce006',
-        categoria: 'Doce',
-        subcategoria: 'Vitrine',
-        nome: 'Carolinas',
-        descricao: 'Pequenas choux cream recheadas com creme.',
-        preco: 7.00,
-        disponivel: true,
-        img: `<img src= './imagens/imagensprodutos/carolina.jfif'></img>`
-    },
-
-];
+import { bancoDeDadosPadaria } from "../produtos/BD_padaria.js";
+const bancoDeDadosPadaria1 = bancoDeDadosPadaria
 
 const conteudoPesquisa = document.querySelector('#conteudo-pesquisa')
 const  listaDaSacolaContainer = document.querySelector('#ListaDaSacola') 
+const paginaSacola = document.querySelector('#paginaSacola')
 
 let produtoPesquisado = true
 //variavel global para obj filtrados
@@ -467,7 +20,7 @@ const pesquisar = pesquisar => {
     let input = document.getElementById('valorPesquisar')
     let valorInput = input.value.toLowerCase().trim()
 
-    const produtosFiltrados = bancoDeDadosPadaria.filter(produto => {
+    const produtosFiltrados = bancoDeDadosPadaria1.filter(produto => {
         return produto.categoria.toLowerCase() === valorInput || //pesquisando por categoria
             produto.categoria.toLowerCase() + 's' === valorInput || //pesquisando por categoria no plural
             produto.nome.toLowerCase() === valorInput || //pesquisando por nome
@@ -502,41 +55,9 @@ function exibir1() {
 
 
 
-const criarCardProduto = (produto) => {
-    const precoFormatado = produto.preco.toFixed(2).replace('.', ',');
-    const unidade = produto.venda || 'Un.'; // Adiciona uma unidade padrão
-    const isSalgadoOuDoce = produto.categoria === 'Salgado' || produto.categoria === 'Doce';
 
-    // O botão 'Fazer Pedido' (abre o modal)
-    const botaoAdicionar = isSalgadoOuDoce
-        ? `<button class="btn btn-warning mt-2 btn-sm" onclick="abrirModal('${produto.id}')">
-            Fazer Pedido
-           </button>`
-        : ''; // Apenas Salgados e Doces abrem o modal de pedido/encomenda
-
-    return `
-        <div class="card p-2 m-2" style="width: 18rem;">
-            <div class="card-img-top mx-auto" style="height: 200px; display: flex; align-items: center; justify-content: center;">
-                ${produto.img}
-            </div>
-            <div class="card-body text-center">
-                <h5 class="card-title">${produto.nome}</h5>
-                <p class="card-text">${produto.descricao}</p>
-                <p class="card-text"><strong>R$ ${precoFormatado} / ${unidade}</strong></p>
-                ${botaoAdicionar}
-            </div>
-        </div>
-    `;
-};
 function exibir() {
-    const formsPesquisa = document.querySelectorAll('#botao_pesquisar');
-    formsPesquisa.forEach(form => {
-        form.addEventListener('submit', (e) => {
-            
-            e.preventDefault(); // Evita o recarregamento da página
-        
-        });
-    });
+    
 
     const produtosFiltrados = localStorage.getItem('pesquisado')
     produtosDisponiveis = JSON.parse(produtosFiltrados)
@@ -735,7 +256,21 @@ function adicionarNaSacola(produto) {
     }
 }
 // =========================================================================
+function notificarsacola(item) {
+    // 1. Percorrer todas as chaves no localStorage
+    for (let i = 0; i < localStorage.length; i++) {
+        // Obter o nome da chave na posição 'i'
+        const key = localStorage.key(i);
 
+        // 2. Verificar se a chave começa com o prefixo desejado
+        if (key && key.startsWith(item)) {
+           
+          return  paginaSacola.classList.add('sacolaAtiva')
+        }
+         return
+       }   
+      
+    }
 // === NOVAS FUNÇÕES PARA CONFIGURAR E TRATAR EVENTOS DO MODAL (Chamadas apenas uma vez) ===
 
 function fecharModal() {
@@ -766,7 +301,7 @@ function salvarNaSacola() {
 
         // Fecha o modal após adicionar
         fecharModal();
-
+        notificarsacola('sacola_')
        
     } else {
         console.warn("Nenhum produto para adicionar à sacola.");
@@ -816,12 +351,12 @@ if (document.getElementById('imagem_referencia_input_custom')) {
 document.addEventListener('DOMContentLoaded', (event) => {
     // Configura os listeners do modal (agora com certeza o HTML já existe)
     configurarListenersModal();
-
+    notificarsacola('sacola_')
     const eventoPesquisar = document.querySelector('.botao_pesquisar')
     eventoPesquisar.addEventListener('click', mostrandoPesquisa)
     // Funções que também precisam de elementos DOM existentes
     listandoProdutos(); // Se esta função manipula o DOM, deve estar aqui.
     add2(); // Configura listeners para os botões da lista completa de produtos
-
+    
 });
 

@@ -1,7 +1,7 @@
 import { bancoDeDadosPadaria } from "../produtos/BD_padaria.js";
 
 
-
+const paginaSacola = document.querySelector('#paginaSacola')
 const produtosEncontrados = [];
 function listarProdutosPorPrefixo(prefixo) {
 
@@ -129,46 +129,45 @@ function CriandoSacola() {
 
 function remover() {
     let btn = document.querySelectorAll('.botao_remover') //lista de botoes com essa classe
+    if (btn) {
+        btn.forEach(btn => {//percorrendo lista de botoes
 
-    btn.forEach(btn => {//percorrendo lista de botoes
+            // 3. Adiciona o evento de clique a CADA botão
+            btn.addEventListener('click', (event) => {
+                // usando o 'data-produto-id' para recuperar o id de cada produto
+                const idDoProduto = event.currentTarget.dataset.produtoId;
 
-        // 3. Adiciona o evento de clique a CADA botão
-        btn.addEventListener('click', (event) => {
-            // usando o 'data-produto-id' para recuperar o id de cada produto
-            const idDoProduto = event.currentTarget.dataset.produtoId;
+                removerItemSacola(idDoProduto)
+            });
 
-            removerItemSacola(idDoProduto)
+
         });
-
-
-    });
+    }
 
 }
 
 function finalizar() {
     let btn = document.querySelector('#botao_finalizar') //lista de botoes com essa classe
 
+    if (btn) {
+        // 3. Adiciona o evento de clique a CADA botão
+        btn.addEventListener('click', () => {
+            let keys = []
 
-    // 3. Adiciona o evento de clique a CADA botão
-    btn.addEventListener('click', () => {
-        let keys = []
-        
-        for (let i = 0; i < localStorage.length; i++) {
-            // 1. Pega o nome da chave na posição 'i'
-            const key = localStorage.key(i);
+            for (let i = 0; i < localStorage.length; i++) {
+                // 1. Pega o nome da chave na posição 'i'
+                const key = localStorage.key(i);
 
-            if (key.startsWith(prefixoDesejado)) {
-                keys.push(key)
+                if (key.startsWith(prefixoDesejado)) {
+                    keys.push(key)
+                }
             }
-        }
-       
-        keys.forEach(chave => {
-            finalizarPedido(chave)
-        })
 
-
-});
-
+            keys.forEach(chave => {
+                finalizarPedido(chave)
+            })
+        });
+    }
 }
 
 
@@ -196,7 +195,21 @@ function removerItemSacola(id) {
 
 };
 
+function notificarsacola(item) {
+    // 1. Percorrer todas as chaves no localStorage
+    for (let i = 0; i < localStorage.length; i++) {
+        // Obter o nome da chave na posição 'i'
+        const key = localStorage.key(i);
 
+        // 2. Verificar se a chave começa com o prefixo desejado
+        if (key && key.startsWith(item)) {
+           
+          return  paginaSacola.classList.add('sacolaAtiva')
+        }
+         return
+       }   
+      
+    }
 
 
 const finalizarPedido = (chave) => {
@@ -213,5 +226,7 @@ CriandoSacola()
 
 finalizar()
 document.addEventListener('DOMContentLoaded', (event) => {
+    
     remover()
+    notificarsacola('sacola_')
 });
